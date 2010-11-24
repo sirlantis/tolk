@@ -25,10 +25,10 @@
         <% if phrase.translations.primary %>
           <tr>
             <td class="translation">
-              <%= hidden_field_tag :"translations[][id]", phrase.translation.id %>
-              <%= hidden_field_tag :"translations[][locale_id]", phrase.translation.locale_id %>
-              <%= text_area_tag :"translations[][text]", format_i18n_text_area_value(phrase.translation.text), :class => 'locale',
-                                :onfocus => "$(this).up('tr').addClassName('active');", :onblur => "$(this).up('tr').removeClassName('active');" %>
+              <%= hidden_field_tag :"translations[][id]", phrase.translation.id, :id => "id_#{phrase.translation.object_id}" %>
+              <%= hidden_field_tag :"translations[][locale_id]", phrase.translation.locale_id, :id => "locale_id_#{phrase.translation.object_id}" %>
+              <%= text_area_tag :"translations[][text]", format_i18n_text_area_value(phrase.translation.text), :class => 'locale', :id => "text_#{phrase.translation.object_id}",
+                                :onfocus => "$(this).up('tr').addClassName('active');", :onblur => "$(this).up('tr').removeClassName('active');", :rows => 5, :cols => 50 %>
             </td>
             <td class="phrase">
 
