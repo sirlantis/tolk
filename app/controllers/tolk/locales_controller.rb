@@ -41,6 +41,8 @@ module Tolk
 
     def find_locale
       @locale = Tolk::Locale.find_by_name!(params[:id])
+      id = params[:language].to_i
+      @alternate_locale = Tolk::Locale.find_by_id(params[:language]) if id != Tolk::Locale.primary_locale.id and id != @locale.id
     end
   end
 end

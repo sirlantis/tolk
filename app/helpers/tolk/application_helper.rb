@@ -29,5 +29,10 @@ module Tolk
       select_tag 'scope', options_for_select([[Tolk::Locale.primary_locale.language_name, "origin"],
                                               [locale.language_name, "target"]], params[:scope])
     end
+
+    def change_primary_language_select
+      options = options_for_select Tolk::Locale.all.map{|l| [l.language_name, (params[:language].to_i == l.id ? '#' : url_for(request.parameters.merge({:language => l.id})))]}, '#'
+      select_tag 'language', options, :onchange => 'window.location.href = this.value'
+    end
   end
 end

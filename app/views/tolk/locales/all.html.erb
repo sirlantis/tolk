@@ -1,4 +1,6 @@
-<% content_for :locale do %><span class="locale"><%= @locale.language_name %></span>
+<% content_for :locale do %>
+	<span class="locale"><%= @locale.language_name %></span>
+	<span style="float:right;">Change basic language: <%= change_primary_language_select %></span>
 <% end %>
 
 <h3 class="switch">Completed translations <span>(<%= link_to 'See phrases missing translation', @locale %>)</span></h3>
@@ -17,7 +19,7 @@
         <table class="translations">
       <tr>
         <th class="translation"><%= @locale.language_name -%></th>
-        <th class="key"><%= Tolk::Locale.primary_language_name -%></th>
+          <th class="key"><span class="primary"><%= @alternate_locale.try(:language_name) -%></span> / <%= Tolk::Locale.primary_language_name -%></th>
       </tr>
       <% @phrases.each do |phrase| %>
         <% if phrase.translations.primary %>
@@ -40,7 +42,9 @@
                   <%= format_i18n_value(phrase.translations.primary.previous_text) -%>
                 </div>
               <% else %>
-                <%= format_i18n_value(phrase.translations.primary.text) -%>
+                <span class="<%= 'primary' if @alternate_locale and phrase.translations.for(@alternate_locale) %>">
+									<%= format_i18n_value(((@alternate_locale and phrase.translations.for(@alternate_locale)) || phrase.translations.primary).text) -%>
+								</span>
               <% end %>
 
               <span class="key"><%= phrase.key %></span>

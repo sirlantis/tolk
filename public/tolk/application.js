@@ -5,7 +5,7 @@ Event.observe(window, 'load', function() {
 	// Translate the phrase when the translator clicks on the text area
 	// only fires if textarea is blank
 	$$('textarea').invoke('observe', 'click', function(event) {
- 		var phrase = this.up('tr').down('span.to_translate');
+ 		var phrase = this.up('tr').down('span.to_translate_hidden');
 		var textarea = this;
 		var target_language = $('target_language').innerHTML;
 		

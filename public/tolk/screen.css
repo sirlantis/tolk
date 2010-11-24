@@ -294,6 +294,10 @@ table.translations .highlight {
   background-color: yellow;
 }
 
+table.translations .primary {
+  background-color: #9DFF8B;
+}
+
 /*-------------------------------------------------
 Pagination
 -------------------------------------------------*/
