@@ -1,5 +1,9 @@
 module Tolk
   module ApplicationHelper
+    def format_google_i18n_value(value)
+      h(yaml_value(value))
+    end
+
     def format_i18n_value(value)
       h(yaml_value(value)).gsub(/\n/, '<br />')
     end

@@ -42,7 +42,7 @@
 	                <%= format_i18n_value(((@alternate_locale and phrase.translations.for(@alternate_locale)) || phrase.translations.primary).text) -%>
 	              <% end -%>
 							</span>
-							<span class="to_translate_hidden" style="display:none"><%= h(yaml_value(phrase.translations.primary.text)) %></span>
+							<span class="to_translate_hidden" style="display:none"><%= format_google_i18n_value(phrase.translations.primary.text) %></span>
               <span class="key" title="<%= phrase.key %>"><%= truncate(phrase.key, :length => 100) %></span>
             </td>
           </tr>
